@@ -9,16 +9,23 @@
       <stop offset="100%" style="stop-color:#fef3c7"/>
     </linearGradient>
   </defs>
+  <!-- Background circle -->
   <circle cx="256" cy="256" r="240" fill="#ecfdf5"/>
+  <!-- Book base -->
   <path d="M120 140 L120 380 Q120 410 150 410 L362 410 Q392 410 392 380 L392 140 Q392 110 362 110 L150 110 Q120 110 120 140 Z" fill="url(#bookGrad)"/>
+  <!-- Left page -->
   <path d="M140 150 L140 370 Q140 385 155 385 L250 385 L250 150 Z" fill="url(#pageGrad)"/>
+  <!-- Right page -->
   <path d="M262 150 L262 385 L357 385 Q372 385 372 370 L372 150 Z" fill="url(#pageGrad)"/>
+  <!-- Spine -->
   <rect x="248" y="150" width="16" height="235" fill="#065f46"/>
+  <!-- Decorative lines on pages -->
   <line x1="160" y1="190" x2="235" y2="190" stroke="#064e3b" stroke-width="3" opacity="0.3"/>
   <line x1="160" y1="220" x2="235" y2="220" stroke="#064e3b" stroke-width="3" opacity="0.3"/>
   <line x1="160" y1="250" x2="220" y2="250" stroke="#064e3b" stroke-width="3" opacity="0.3"/>
   <line x1="275" y1="190" x2="350" y2="190" stroke="#064e3b" stroke-width="3" opacity="0.3"/>
   <line x1="275" y1="220" x2="350" y2="220" stroke="#064e3b" stroke-width="3" opacity="0.3"/>
   <line x1="275" y1="250" x2="340" y2="250" stroke="#064e3b" stroke-width="3" opacity="0.3"/>
+  <!-- Small crescent or decorative element -->
   <path d="M256 80 Q280 100 256 120 Q232 100 256 80" fill="#047857" opacity="0.8"/>
 </svg>

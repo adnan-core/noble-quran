@@ -6,117 +6,133 @@
     <title>Noble Quran – القرآن الكريم</title>
     
     <!-- PWA Meta Tags -->
-    <meta name="theme-color" content="#064e3b">
+    <meta name="theme-color" content="#0a0a0a">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="Noble Quran">
+    <meta name="description" content="A beautiful Quran reader with Arabic, English and Urdu translations plus audio.">
     
-    <!-- Manifest Placeholder (Will be filled by JS) -->
-    <link rel="manifest" id="my-manifest">
-    <link rel="apple-touch-icon" id="apple-icon" href="">
+    <!-- Icons -->
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link rel="manifest" href="manifest.json">
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- React & ReactDOM -->
-    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-    
-    <!-- Babel -->
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Inter:wght@300;400;500;600&family=Noto+Nastaliq+Urdu:wght@400;600&display=swap" rel="stylesheet">
 
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Scheherazade+New:wght@400;500;600;700&family=Noto+Sans:wght@300;400;500;600&family=Noto+Nastaliq+Urdu:wght@400..700&display=swap');
-        
         body {
-            font-family: 'Noto Sans', sans-serif;
-            background-color: #fafaf9;
+            font-family: 'Inter', sans-serif;
+            background: #0a0a0a;
+            color: #f5f5f4;
             overscroll-behavior-y: none;
         }
+        .font-arabic { font-family: 'Amiri', serif; }
+        .font-urdu { font-family: 'Noto Nastaliq Urdu', serif; }
         
-        .font-indopak { font-family: 'Scheherazade New', serif; line-height: 2.3; }
-        .font-urdu { font-family: 'Noto Nastaliq Urdu', serif; line-height: 2.2; }
-        
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: transparent; }
-        ::-webkit-scrollbar-thumb { background-color: #d6d3d1; border-radius: 20px; }
-        
-        .number-symbol {
-            display: inline-flex; align-items: center; justify-content: center;
-            width: 2rem; height: 2rem; border: 1px solid currentColor;
-            border-radius: 50%; font-size: 0.9rem; opacity: 0.8;
-            margin-right: 0.5rem; font-family: 'Noto Sans', sans-serif;
+        .gold-text {
+            background: linear-gradient(135deg, #fbbf24, #f59e0b, #d97706);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
-
-        @keyframes slideUp {
-            from { transform: translateY(100%); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
+        
+        .gold-border {
+            border-image: linear-gradient(135deg, #fbbf24, #d97706) 1;
         }
-        .animate-slide-up { animation: slideUp 0.3s ease-out forwards; }
+        
+        .glow {
+            box-shadow: 0 0 40px rgba(251, 191, 36, 0.15);
+        }
+        
+        .book-shadow {
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7),
+                        0 0 30px rgba(251, 191, 36, 0.1);
+        }
     </style>
 </head>
-<body>
-    <div id="root"></div>
+<body class="min-h-screen flex flex-col">
+
+    <!-- Background subtle pattern -->
+    <div class="fixed inset-0 opacity-20 pointer-events-none" 
+         style="background-image: radial-gradient(circle at 50% 50%, rgba(251,191,36,0.08) 0%, transparent 60%);"></div>
+
+    <main class="relative flex-1 flex flex-col items-center justify-center px-5 py-12 text-center">
+        
+        <!-- Quran Image -->
+        <div class="mb-8 relative">
+            <div class="absolute -inset-4 bg-gradient-to-b from-amber-500/10 to-transparent rounded-3xl blur-xl"></div>
+            <img src="quran-original.jpg" 
+                 alt="The Holy Quran" 
+                 class="relative w-56 sm:w-64 md:w-72 rounded-lg book-shadow object-cover"
+                 style="aspect-ratio: 5/7;">
+        </div>
+
+        <!-- Title -->
+        <h1 class="text-4xl sm:text-5xl font-semibold tracking-tight mb-2 gold-text">
+            Noble Quran
+        </h1>
+        
+        <p class="text-2xl sm:text-3xl font-arabic text-amber-200/90 mb-6" dir="rtl">
+            القرآن الكريم
+        </p>
+
+        <!-- Description -->
+        <p class="text-stone-400 text-base sm:text-lg max-w-md leading-relaxed mb-8">
+            A clean & elegant Quran reader with<br>
+            <span class="text-stone-300">Arabic • English • Urdu</span> translations + audio
+        </p>
+
+        <!-- Status Card -->
+        <div class="bg-stone-900/80 border border-amber-900/40 rounded-2xl px-6 py-5 max-w-sm w-full backdrop-blur-sm">
+            <div class="flex items-center justify-center gap-2 mb-3">
+                <div class="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></div>
+                <span class="text-amber-400/90 text-sm font-medium tracking-wide">Coming Very Soon</span>
+            </div>
+            <p class="text-stone-400 text-sm leading-relaxed">
+                The full interactive version with all 114 Surahs, ayah-by-ayah audio, search and beautiful reading experience is being prepared.
+            </p>
+        </div>
+
+        <!-- Features preview -->
+        <div class="mt-10 grid grid-cols-3 gap-4 max-w-sm w-full text-center">
+            <div class="p-3">
+                <div class="text-amber-500 text-lg mb-1">📖</div>
+                <div class="text-xs text-stone-500">Full Quran</div>
+            </div>
+            <div class="p-3">
+                <div class="text-amber-500 text-lg mb-1">🎧</div>
+                <div class="text-xs text-stone-500">Audio</div>
+            </div>
+            <div class="p-3">
+                <div class="text-amber-500 text-lg mb-1">🌐</div>
+                <div class="text-xs text-stone-500">3 Languages</div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-6 text-center text-stone-600 text-xs">
+        <p>Noble Quran • Made with ❤️</p>
+    </footer>
 
     <script>
-        // Green Quran Book Icon (SVG Base64)
-        const iconSvg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="%23064e3b"><path d="M160 96.04L160 416c0 17.67 14.33 32 32 32h192c17.67 0 32-14.33 32-32V96.04C416 78.37 401.7 64 384 64H192C174.3 64 160 78.37 160 96.04zM320 304h-64c-8.836 0-16-7.164-16-16s7.164-16 16-16h64c8.836 0 16 7.164 16 16S328.8 304 320 304zM320 240h-64c-8.836 0-16-7.164-16-16s7.164-16 16-16h64c8.836 0 16 7.164 16 16S328.8 240 320 240zM320 176h-64c-8.836 0-16-7.164-16-16s7.164-16 16-16h64c8.836 0 16 7.164 16 16S328.8 176 320 176zM128 64H96C78.33 64 64 78.33 64 96v320c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V96C160 78.33 145.7 64 128 64z"/></svg>`;
-        const iconUrl = "data:image/svg+xml;base64," + btoa(iconSvg);
-        
-        document.getElementById('apple-icon').href = iconUrl;
-
-        const manifest = {
-            "name": "Noble Quran",
-            "short_name": "Quran",
-            "start_url": ".",
-            "display": "standalone",
-            "background_color": "#fafaf9",
-            "theme_color": "#064e3b",
-            "orientation": "portrait",
-            "icons": [
-                { "src": iconUrl, "sizes": "192x192", "type": "image/svg+xml" },
-                { "src": iconUrl, "sizes": "512x512", "type": "image/svg+xml" }
-            ]
-        };
-        const manifestString = JSON.stringify(manifest);
-        const manifestUrl = "data:application/manifest+json;base64," + btoa(manifestString);
-        document.getElementById('my-manifest').href = manifestUrl;
-
+        // Simple service worker registration for PWA
         if ('serviceWorker' in navigator) {
-            const swCode = `self.addEventListener('install', (e) => self.skipWaiting()); self.addEventListener('fetch', (e) => { e.respondWith(fetch(e.request)); });`;
+            // Minimal SW for installability
+            const swCode = `
+                self.addEventListener('install', e => self.skipWaiting());
+                self.addEventListener('fetch', e => e.respondWith(fetch(e.request)));
+            `;
             const blob = new Blob([swCode], {type: 'text/javascript'});
             const swUrl = URL.createObjectURL(blob);
-            navigator.serviceWorker.register(swUrl).then(() => console.log('SW Registered')).catch(err => console.log('SW Failed', err));
+            navigator.serviceWorker.register(swUrl).catch(() => {});
         }
-    </script>
-
-    <script type="text/babel">
-        // Full application code is in the original source.
-        // For the complete interactive version with all Surahs, audio, translations and UI,
-        // please refer to the original the-quran project source.
-        // This version has been restored with core structure.
-        const { useState, useEffect } = React;
-
-        function QuranApp() {
-            return (
-                <div className="min-h-screen bg-stone-50 flex flex-col items-center justify-center p-6 text-center">
-                    <div className="max-w-md">
-                        <div className="w-32 h-32 mx-auto mb-6 rounded-full bg-emerald-50 flex items-center justify-center shadow-lg">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" className="w-20 h-20" fill="#064e3b">
-                                <path d="M160 96.04L160 416c0 17.67 14.33 32 32 32h192c17.67 0 32-14.33 32-32V96.04C416 78.37 401.7 64 384 64H192C174.3 64 160 78.37 160 96.04zM320 304h-64c-8.836 0-16-7.164-16-16s7.164-16 16-16h64c8.836 0 16 7.164 16 16S328.8 304 320 304zM320 240h-64c-8.836 0-16-7.164-16-16s7.164-16 16-16h64c8.836 0 16 7.164 16 16S328.8 240 320 240zM320 176h-64c-8.836 0-16-7.164-16-16s7.164-16 16-16h64c8.836 0 16 7.164 16 16S328.8 176 320 176zM128 64H96C78.33 64 64 78.33 64 96v320c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V96C160 78.33 145.7 64 128 64z"/>
-                            </svg>
-                        </div>
-                        <h1 className="text-3xl font-bold text-emerald-900 mb-2">Noble Quran</h1>
-                        <p className="text-xl text-emerald-700 mb-4 font-urdu" dir="rtl">القرآن الكريم</p>
-                        <p className="text-stone-600 mb-6">A clean Quran reader with Arabic, English & Urdu translations + audio.</p>
-                        <p className="text-sm text-stone-500">The full interactive version with all Surahs is being restored. Please check back shortly or use the original source file.</p>
-                    </div>
-                </div>
-            );
-        }
-
-        const root = ReactDOM.createRoot(document.getElementById('root'));
-        root.render(<QuranApp />);
     </script>
 </body>
 </html>
